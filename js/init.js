@@ -1,6 +1,6 @@
 // Importieren der Firebase-Module
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js';
-import { getDatabase, ref, set, update, remove, onValue } from 'https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js';
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js';
+import { getDatabase, ref, set, update, remove, onValue } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js';
 
 // Firebase Konfiguration
 const firebaseConfig = {

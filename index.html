@@ -1,13 +1,45 @@
+
+
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
-    <title>Firebase CRUD Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styleLogin.css">
 </head>
+
 <body>
-    <h1>Firebase CRUD Test</h1>
-    <p>Überprüfe die Konsole für die Output-Daten.</p>
-    <!-- Verweis auf das init.js Script mit dem korrekten relativen Pfad als Modul -->
-    <script type="module" src="../js/init.js"></script>
+    <!-------------------------Login-Feld------------------------------------------------------------------------>
+    <div class="login-box">
+        <form id="loginForm">
+            <div class="login-header">
+            <header>Anmelden</header>
+        </div>
+        <!-------------------------Email----------------------------------------------------------------------------->
+        <div class="input-box">
+            <input type="text" id="username" class="input-field" placeholder="IU-Email" required>
+            <ion-icon name="mail-outline"></ion-icon><!--Email-Icon-->
+            <!-------------------------Passwort-------------------------------------------------------------------------->
+            <div class="input-box">
+                <input type="password" id = "password" class="input-field" placeholder="Passwort" required>
+                <ion-icon name="lock-closed-outline"></ion-icon><!--Schloss-Icon-->
+            </div>
+            <!-------------------------Anmeldeknopf---------------------------------------------------------------------->
+            <div class="input-submit">
+                <button type="submit" id="loginButton" class="submit-btn">Fortfahren</button>
+            </div>
+        </form>
+        </div>
+        <!-------------------------ICONS----------------------------------------------------------------------------->
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+        <!-- Js Skript einbinden-->
+        <script  type="module" src="/js/login.js"></script>
+        
+
 </body>
+
 </html>

@@ -3,6 +3,7 @@ import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.9.0/firebas
 import { getDatabase, ref, set, update, remove, onValue } from 'https://www.gstatic.com/firebasejs/10.9.0/firebase-database.js';
 
 // Firebase Konfiguration
+
 const firebaseConfig = {
     apiKey: "AIzaSyB6zy51t1vNmO7kc4UMttKULROzFXMwHtk",
     authDomain: "cloud-2659a.firebaseapp.com",

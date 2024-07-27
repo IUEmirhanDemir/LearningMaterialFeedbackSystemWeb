@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styleReport.css">
+</head>
+
+<body>
+    <header>
+        <h2 class="logo">Logo</h2>
+        <nav class="navigation">
+            <a href="#">Neue Meldung</a>
+            <a href="#">Dashboard</a>
+            <a href="#">Help</a>
+
+
+            <!--Optionaler Login-Button
+            <button class="btnLogin-popup">Login</button> -->
+        </nav>
+    </header>
+    <!-------------------------Formbox------------------------------------------------------------------------------------->
+    <div class="form-box">
+        <!-------------------------Korrekturmeldung---------------------------------------------------------------------------->
+        <div class="report-container" id="report">
+            <div class="top">
+                <h1>Korrekturmeldung</h1>
+            </div>
+            <!-------------------------Die Oberen Boxen-------------------------------------------------------------------------------------->
+            <div class="two-forms">
+                <!-------------------------Art der Meldung----------------------------------------------------------------------------->
+                <select class="input-field">
+                    <option value="" disabled selected>Art der Meldung</option>
+                    <option value="fehler">Fehler</option>
+                    <option value="vorschlag">Vorschlag</option>
+                    <option value="ergänzung">Ergänzung</option>
+                    <option value="sonstiges">sonstiges</option>
+                </select>
+                <!-------------------------Medium-------------------------------------------------------------------------------------->
+                <select class="input-field">
+                    <option value="" disabled selected>Medium</option>
+                    <option value="pdf">PDF</option>
+                    <option value="tutorien">Tutorien</option>
+                    <option value="mycampus-fragen">MyCampus-Fragen</option>
+                    <option value="sonstiges">sonstiges</option>
+                </select>
+            </div>
+            <!-------------------------Modul--------------------------------------------------------------------------------------->
+            <div class="form-group">
+                <select class="input-field">
+                    <option value="" disabled selected>Modul</option>
+                    <option value="mathematik">IMT102-01 Mathematik Grundlagen II </option>
+                    <option value="re">IREN01 Requirements Engineering</option>
+                    <option value="Seminar Software">ISSE01 Seminar Software Engineering</option>
+                    <option value="sonstiges">sonstiges</option>
+                </select>
+            </div>
+            <!-------------------------Beschreibung-------------------------------------------------------------------------------->
+            <div class="beschreibung-box">
+                <div class="input-box">
+                    <textarea class="input-field"
+                        placeholder=" Rechtschreibfehler auf Seite 21, Zeile 15: Softvare (maximal 100 Zeichen)"
+                        maxlength="100"></textarea>
+                </div>
+            </div>
+            <!-------------------------Absende-Button------------------------------------------------------------------------------>
+            <div class="input-box">
+                <input type="submit" class="submit" value="Absenden">
+            </div>
+        </div>
+    </div>
+    <!-------------------------Icons--------------------------------------------------------------------------------------->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

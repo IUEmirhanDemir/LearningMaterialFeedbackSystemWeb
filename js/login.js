@@ -41,13 +41,13 @@ async function login() {
 
     const isProfessor = await checkCredentials('loginData/professors', username, password);
     if (isProfessor) {
-        window.location.href = 'dashboard.html';
+        window.location.href = '/dashboard.html';
         return;
     }
 
     const isStudent = await checkCredentials('loginData/students', username, password);
     if (isStudent) {
-        window.location.href = 'reportsStudent.html';
+        window.location.href = '/reportsStudent.html';
         return;
     }
 

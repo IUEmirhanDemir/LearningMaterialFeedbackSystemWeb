@@ -41,12 +41,14 @@ async function login() {
 
     const isProfessor = await checkCredentials('loginData/professors', username, password);
     if (isProfessor) {
+        localStorage.setItem('username', username);
         window.location.href = '/dashboard.html';
         return;
     }
 
     const isStudent = await checkCredentials('loginData/students', username, password);
     if (isStudent) {
+        localStorage.setItem('username', username);
         window.location.href = '/reportsStudent.html';
         return;
     }
@@ -65,3 +67,4 @@ document.getElementById('password').addEventListener('keypress', function(event)
         login();
     }
 });
+

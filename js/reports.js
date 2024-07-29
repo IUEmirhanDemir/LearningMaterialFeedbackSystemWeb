@@ -23,6 +23,7 @@ const tutorAssignments = {
 };
 
 function submitReport() {
+    const username = localStorage.getItem('username');
     const reportType = document.getElementById('reportType').value;
     const medium = document.getElementById('medium').value;
     const module = document.getElementById('module').value;
@@ -35,13 +36,14 @@ function submitReport() {
 
     const tutor = tutorAssignments[module] || "Kein Tutor zugeordnet";
     const newReport = {
+        reporter: username,
         type: reportType,
         medium: medium,
         module: module,
         text: message,
         tutor: tutor,
         status: "neu",
-        rating: 0
+        rating: 4
     };
 
     saveReportToFirebase(newReport);

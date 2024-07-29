@@ -42,7 +42,7 @@ async function login() {
     const isProfessor = await checkCredentials('loginData/professors', username, password);
     if (isProfessor) {
         localStorage.setItem('username', username);
-        window.location.href = '/dashboard.html';
+        window.location.href = '/dashBoard.html';
         return;
     }
 

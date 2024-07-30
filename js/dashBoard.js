@@ -20,8 +20,15 @@ function loadReports() {
         const data = snapshot.val();
 
 
-        const sortedKeys = Object.keys(data).sort((a, b) => data[b].rating - data[a].rating);
-
+        const sortedKeys = Object.keys(data).sort((a, b) => {
+            // Sortiere zuerst nach Status (neu immer ganz oben)
+            const statusOrder = { 'neu': 0, 'In Bearbeitung': 1, 'Umgesetzt': 2, 'Abgelehnt': 3 };
+            if (statusOrder[data[a].status] !== statusOrder[data[b].status]) {
+                return statusOrder[data[a].status] - statusOrder[data[b].status];
+            }
+            // Dann nach Bewertung, falls Status gleich ist
+            return data[b].rating - data[a].rating;
+        });
 
         const tableBody = document.querySelector('#reportsTable tbody');
         tableBody.innerHTML = '';
@@ -29,7 +36,7 @@ function loadReports() {
         sortedKeys.forEach(key => {
             const report = data[key];
             const row = tableBody.insertRow(-1);
-
+            /** farbanpassung an den Status */
             if (report.rating === 4 && report.status === 'neu') {
                 row.style.backgroundColor = '#deecff ';
             } if (report.status === 'neu') {
@@ -39,6 +46,7 @@ function loadReports() {
             } if (report.status === 'Abgelehnt') {
                 row.style.backgroundColor = '#ffcaca';
             }
+
 
             row.insertCell(0).textContent = report.reporter;
             row.insertCell(1).textContent = report.module;
@@ -74,7 +82,15 @@ function createStatusSelect(status, key) {
         <option value="In Bearbeitung" ${status === 'In Bearbeitung' ? 'selected' : ''}>In Bearbeitung</option>
         <option value="Umgesetzt" ${status === 'Umgesetzt' ? 'selected' : ''}>Umgesetzt</option>
         <option value="Abgelehnt" ${status === 'Abgelehnt' ? 'selected' : ''}>Abgelehnt</option>`;
-    select.onchange = () => update(ref(db, 'realReports/' + key), { status: select.value });
+    select.onchange = () => {
+        const prioritySelect = select.closest('tr').querySelector('select');
+        const currentPriority = parseInt(prioritySelect.value);
+        if (currentPriority === 4) { // Ohne Priorität
+            prioritySelect.value = "1"; // Setze auf Niedrig
+            update(ref(db, 'realReports/' + key), { rating: 1 });
+        }
+        update(ref(db, 'realReports/' + key), { status: select.value });
+    };
     return select;
 }
 

@@ -144,25 +144,51 @@ header {
     width: 90%;
 }
 
+.drop-down {
+    background: #ffffff;
+    border: thin solid #000000;
+    outline: none;
+}
 
+.drop-down:hover,
+.drop-down:focus {
+    background: hsl(224, 79%, 96%);
+}
 
-th, td {
+/* ausgegraute Zeilen */
+.grayed-out {
+    background-color: #f0f0f0;
+    color: #888;
+}
+
+.grayed-out select {
+    background-color: #f0f0f0;
+    color: #888;
+}
+
+th,
+td {
     padding: 12px 15px;
-    text-align: center; 
+    text-align: center;
     border-bottom: 1px solid #ccc;
 }
 
-th:first-child, td:first-child {
-    text-align: left; 
+th:first-child,
+td:first-child {
+    text-align: left;
 }
 
-th:last-child, td:last-child {
+th:last-child,
+td:last-child {
     border-right: none;
 }
-th:nth-child(5), td:nth-child(5) {
-    width: 20%; 
+
+th:nth-child(5),
+td:nth-child(5) {
+    width: 20%;
 }
 
-th:not(:nth-child(5)), td:not(:nth-child(5)) {
-    width: calc((100% - 20%) / 8); 
+th:not(:nth-child(5)),
+td:not(:nth-child(5)) {
+    width: calc((100% - 20%) / 8);
 }

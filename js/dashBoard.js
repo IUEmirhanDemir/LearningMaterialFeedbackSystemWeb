@@ -36,15 +36,17 @@ function loadReports() {
         sortedKeys.forEach(key => {
             const report = data[key];
             const row = tableBody.insertRow(-1);
-            /** farbanpassung an den Status */
+            // farbanpassung an den Status //
             if (report.rating === 4 && report.status === 'neu') {
                 row.style.backgroundColor = '#deecff ';
             } if (report.status === 'neu') {
                 row.style.backgroundColor = '#deecff ';
             } if (report.status === 'Umgesetzt') {
                 row.style.backgroundColor = '#e8ffde ';
+                row.classList.add('grayed-out');
             } if (report.status === 'Abgelehnt') {
                 row.style.backgroundColor = '#ffcaca';
+                row.classList.add('grayed-out');
             }
 
 

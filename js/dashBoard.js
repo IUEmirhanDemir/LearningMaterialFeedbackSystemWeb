@@ -30,11 +30,14 @@ function loadReports() {
             const report = data[key];
             const row = tableBody.insertRow(-1);
 
-            if (report.rating === 4) {
+            if (report.rating === 4 && report.status === 'neu') {
                 row.style.backgroundColor = '#deecff ';
-            }
-            if (report.status === 'Umgesetzt') {
+            } if (report.status === 'neu') {
+                row.style.backgroundColor = '#deecff ';
+            } if (report.status === 'Umgesetzt') {
                 row.style.backgroundColor = '#e8ffde ';
+            } if (report.status === 'Abgelehnt') {
+                row.style.backgroundColor = '#ffcaca';
             }
 
             row.insertCell(0).textContent = report.reporter;

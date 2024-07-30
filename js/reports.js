@@ -31,7 +31,7 @@ function submitReport() {
 
     if (!reportType || !medium || !module || !message) {
         alert('Bitte füllen Sie alle Felder aus.');
-        return;  
+        return;
     }
 
     const tutor = tutorAssignments[module] || "Kein Tutor zugeordnet";
@@ -52,8 +52,11 @@ function submitReport() {
 function saveReportToFirebase(report) {
     const reportsRef = ref(db, 'realReports');
     push(reportsRef, report)
-        .then(() => alert('Bericht erfolgreich gespeichert!'))
-        .catch(error => console.error('Fehler beim Speichern des Berichts:', error));
+        .then(() => {
+            alert('Bericht erfolgreich gespeichert!');
+            document.getElementById('korrekturForm').reset(); // Formular zurücksetzen
+        })
+        .catch(error => console.error('Fehler beim Speichern des Berichts:', error))
 }
 
 document.getElementById('submit').addEventListener('click', submitReport);

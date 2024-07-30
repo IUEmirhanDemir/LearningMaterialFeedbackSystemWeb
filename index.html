@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="de">
 
@@ -15,30 +13,32 @@
     <div class="login-box">
         <form id="loginForm">
             <div class="login-header">
-            <header>Anmelden</header>
-        </div>
-        <!-------------------------Email----------------------------------------------------------------------------->
-        <div class="input-box">
-            <input type="text" id="username" class="input-field" placeholder="IU-Email" required>
-            <ion-icon name="mail-outline"></ion-icon><!--Email-Icon-->
-            <!-------------------------Passwort-------------------------------------------------------------------------->
+                <header>Anmelden</header>
+            </div>
+            <!-------------------------Email----------------------------------------------------------------------------->
             <div class="input-box">
-                <input type="password" id = "password" class="input-field" placeholder="Passwort" required>
-                <ion-icon name="lock-closed-outline"></ion-icon><!--Schloss-Icon-->
-            </div>
-            <!-------------------------Anmeldeknopf---------------------------------------------------------------------->
-            <div class="input-submit">
-                <button type="submit" id="loginButton" class="submit-btn">Fortfahren</button>
-            </div>
+                <input type="text" id="username" class="input-field" placeholder=" " required>
+                <label for="username">IU-Email</label>
+                <ion-icon name="mail-outline"></ion-icon><!--Email-Icon-->
+                <!-------------------------Passwort-------------------------------------------------------------------------->
+                <div class="input-box">
+                    <input type="password" id="password" class="input-field" placeholder=" " required>
+                    <label for="password">Passwort</label>
+                    <ion-icon name="lock-closed-outline"></ion-icon><!--Schloss-Icon-->
+                </div>
+                <!-------------------------Anmeldeknopf---------------------------------------------------------------------->
+                <div class="input-submit">
+                    <button type="submit" id="loginButton" class="submit-btn">Fortfahren</button>
+                </div>
         </form>
-        </div>
-        <!-------------------------ICONS----------------------------------------------------------------------------->
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </div>
+    <!-------------------------ICONS----------------------------------------------------------------------------->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-        <!-- Js Skript einbinden-->
-        <script  type="module" src="js/login.js"></script>
-        
+    <!-- Js Skript einbinden-->
+    <script type="module" src="js/login.js"></script>
+
 
 </body>
 

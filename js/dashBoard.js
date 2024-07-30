@@ -24,14 +24,17 @@ function loadReports() {
 
 
         const tableBody = document.querySelector('#reportsTable tbody');
-        tableBody.innerHTML = ''; 
-        
+        tableBody.innerHTML = '';
+
         sortedKeys.forEach(key => {
             const report = data[key];
             const row = tableBody.insertRow(-1);
-             
-            if(report.rating === 4){
-                row.style.backgroundColor = '#f76a6a'; 
+
+            if (report.rating === 4) {
+                row.style.backgroundColor = '#deecff ';
+            }
+            if (report.status === 'Umgesetzt') {
+                row.style.backgroundColor = '#e8ffde ';
             }
 
             row.insertCell(0).textContent = report.reporter;
@@ -42,14 +45,14 @@ function loadReports() {
             row.insertCell(5).textContent = report.text;
             row.insertCell(6).appendChild(createPrioritySelect(report.rating, key));
             row.insertCell(7).appendChild(createStatusSelect(report.status, key));
-           
+
         });
     });
 }
 
 function createPrioritySelect(rating, key) {
     const select = document.createElement('select');
-    select.className = 'drop-down'; 
+    select.className = 'drop-down';
     select.innerHTML = `
         <option value="4" ${rating === 4 ? 'selected' : ''} disabled>Ohne Priorität</option>
         <option value="3" ${rating === 3 ? 'selected' : ''}>Hoch</option>
@@ -71,7 +74,6 @@ function createStatusSelect(status, key) {
     select.onchange = () => update(ref(db, 'realReports/' + key), { status: select.value });
     return select;
 }
-
 
 
 document.addEventListener('DOMContentLoaded', loadReports);

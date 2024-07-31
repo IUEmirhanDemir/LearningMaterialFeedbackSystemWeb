@@ -55,7 +55,7 @@ function loadReports() {
             
             if (report.status === 'neu') {
                 row.style.backgroundColor = '#deecff ';
-
+ 
                 //Innerhalb der Prüfung, prüfen, ob alles andere als rating = 4 ist, wenn ja Button Farbe ändern.
                 if (report.rating !== 4) {  
                     statusCell.style.backgroundColor = '#ffcaca'; 

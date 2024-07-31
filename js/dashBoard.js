@@ -36,19 +36,6 @@ function loadReports() {
         sortedKeys.forEach(key => {
             const report = data[key];
             const row = tableBody.insertRow(-1);
-            // farbanpassung an den Status //
-            if (report.rating === 4 && report.status === 'neu') {
-                row.style.backgroundColor = '#deecff ';
-            } if (report.status === 'neu') {
-                row.style.backgroundColor = '#deecff ';
-            } if (report.status === 'Umgesetzt') {
-                row.style.backgroundColor = '#e8ffde ';
-                row.classList.add('grayed-out');
-            } if (report.status === 'Abgelehnt') {
-                row.style.backgroundColor = '#ffcaca';
-                row.classList.add('grayed-out');
-            }
-
 
             row.insertCell(0).textContent = report.reporter;
             row.insertCell(1).textContent = report.module;
@@ -57,7 +44,33 @@ function loadReports() {
             row.insertCell(4).textContent = report.tutor;
             row.insertCell(5).textContent = report.text;
             row.insertCell(6).appendChild(createPrioritySelect(report.rating, key));
-            row.insertCell(7).appendChild(createStatusSelect(report.status, key));
+            const statusCell = row.insertCell(7).appendChild(createStatusSelect(report.status, key));
+
+
+
+            // farbanpassung an den Status //
+            if (report.rating === 4 && report.status === 'neu') {
+                row.style.backgroundColor = '#deecff ';
+            } 
+            
+            if (report.status === 'neu') {
+                row.style.backgroundColor = '#deecff ';
+
+                //Innerhalb der Prüfung, prüfen, ob alles andere als rating = 4 ist, wenn ja Button Farbe ändern.
+                if (report.rating !== 4) {  
+                    statusCell.style.backgroundColor = '#ffcaca'; 
+                }
+
+            } 
+            
+            if (report.status === 'Umgesetzt') {
+                row.style.backgroundColor = '#e8ffde ';
+                row.classList.add('grayed-out');
+            } if (report.status === 'Abgelehnt') {
+                row.style.backgroundColor = '#ffcaca';
+                row.classList.add('grayed-out');
+            }
+
 
         });
     });

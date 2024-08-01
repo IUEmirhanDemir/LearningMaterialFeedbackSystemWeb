@@ -32,6 +32,7 @@ header {
     user-select: none;
 }
 
+
 .navigation a {
     position: relative;
     font-size: 1.1em;
@@ -161,6 +162,7 @@ header {
     color: #888;
 }
 
+/* ausgegraute drop-downs*/
 .grayed-out select {
     background-color: #f0f0f0;
     color: #888;

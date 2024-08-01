@@ -7,10 +7,29 @@
     font-family: 'Poppins', sans-serif;
 }
 
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+}
+
+.header h1 {
+    justify-content: center;
+    padding-left: 500px;
+}
+
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 70px;
     min-height: 100vh;
     background: #f5f6ff;
 }
@@ -21,20 +40,26 @@ body {
     flex-direction: column;
     border-radius: 6px;
     width: 400px;
-    height: 600px;
+    height: 500px;
     padding: 40px;
-    /*background: #fff; Optionaler Hintergrund*/
+    background: #fff;
+    /* Optional */
 }
 
 .login-header {
     text-align: center;
-    margin: 20px 0 40px 0;
+    margin: 30px 0 35px 0;
 }
 
-.login-header header {
-    color: black;
-    font-size: 30px;
+.login-header h1 {
     font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: -25px;
+}
+
+.login-header h2 {
+    font-size: 15px;
+    font-weight: 400;
 }
 
 .input-box {

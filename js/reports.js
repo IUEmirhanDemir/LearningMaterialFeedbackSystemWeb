@@ -53,10 +53,10 @@ function saveReportToFirebase(report) {
     const reportsRef = ref(db, 'realReports');
     push(reportsRef, report)
         .then(() => {
-            alert('Bericht erfolgreich gespeichert!');
+            alert('Meldung erfolgreich übermittelt!');
             document.getElementById('korrekturForm').reset(); // Formular zurücksetzen
         })
-        .catch(error => console.error('Fehler beim Speichern des Berichts:', error))
+        .catch(error => console.error('Fehler beim Übermitteln der Meldung:', error))
 }
 
 document.getElementById('submit').addEventListener('click', submitReport);

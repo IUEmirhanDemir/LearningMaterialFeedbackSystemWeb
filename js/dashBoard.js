@@ -43,10 +43,21 @@ function loadReports() {
             row.insertCell(3).textContent = report.medium;
             row.insertCell(4).textContent = report.tutor;
             row.insertCell(5).textContent = report.text;
-            const ratingCell = row.insertCell(6).appendChild(createPrioritySelect(report.rating, key));
-            const statusCell = row.insertCell(7).appendChild(createStatusSelect(report.status, key));
 
+            // Differnzieren zwischen Spalte und Button(DropDown)
+            const ratingCell = row.insertCell(6);
+            const ratingSelect = createPrioritySelect(report.rating, key);
+            ratingCell.appendChild(ratingSelect);
 
+            const statusCell = row.insertCell(7);
+            const statusSelect = createStatusSelect(report.status, key);
+            statusCell.appendChild(statusSelect);
+
+            //Wenn Status 'Umgesetzt' oder 'Abgelehnt' => DropDown deaktivieren
+            if (report.status === 'Umgesetzt' || report.status === 'Abgelehnt') {
+                ratingSelect.disabled = true; 
+                statusSelect.disabled = true; 
+            }
 
             // farbanpassung an den Status //
             if (report.rating === 4 && report.status === 'neu') {
@@ -58,7 +69,7 @@ function loadReports() {
 
                 //Innerhalb der Prüfung, prüfen, ob alles andere als rating = 4 ist, wenn ja Button Farbe ändern.
                 if (report.rating !== 4) {
-                    statusCell.style.backgroundColor = '#ffcaca';
+                    statusSelect.style.backgroundColor = '#ffcaca'; 
                 }
             }
 
@@ -97,21 +108,26 @@ function createStatusSelect(status, key) {
     const select = document.createElement('select');
     select.className = 'drop-down';
     select.innerHTML = `
-        <option value="neu" ${status === 'neu' ? 'selected' : ''}disabled>Neu</option>
+        <option value="neu" ${status === 'neu' ? 'selected' : ''}>Neu</option>
         <option value="In Bearbeitung" ${status === 'In Bearbeitung' ? 'selected' : ''}>In Bearbeitung</option>
         <option value="Umgesetzt" ${status === 'Umgesetzt' ? 'selected' : ''}>Umgesetzt</option>
         <option value="Abgelehnt" ${status === 'Abgelehnt' ? 'selected' : ''}>Abgelehnt</option>`;
+
+
     select.onchange = () => {
-        /*   const prioritySelect = select.closest('tr').querySelector('select');
-           const currentPriority = parseInt(prioritySelect.value);
-           if (currentPriority === 4) { // Ohne Priorität
-               prioritySelect.value = "1"; // Setze auf Niedrig
-               update(ref(db, 'realReports/' + key), { rating: 1 });
-           }*/
-        update(ref(db, 'realReports/' + key), { status: select.value });
+        const prioritySelect = select.closest('tr').querySelector('select');
+        const currentPriority = parseInt(prioritySelect.value);
+        if (currentPriority === 4) { // => Prüfe, ob ein Rating festgelegt ist, bevor der Status geändert werden darf
+            alert('Bitte zuerst die Priorisierung einstellen.'); 
+            select.value = status; // => Setze den alten Wert zurück
+        } else {
+            update(ref(db, 'realReports/' + key), { status: select.value });
+        }
     };
+
     return select;
 }
+
 
 
 document.addEventListener('DOMContentLoaded', loadReports);

@@ -55,11 +55,14 @@ function loadReports() {
 
             //Wenn Status 'Umgesetzt' oder 'Abgelehnt' => DropDown deaktivieren
             if (report.status === 'Umgesetzt' || report.status === 'Abgelehnt') {
-                ratingSelect.disabled = true; 
-                statusSelect.disabled = true; 
+                ratingSelect.disabled = true;
+                statusSelect.disabled = true;
             }
 
             // farbanpassung an den Status //
+            if (report.status === 'In Bearbeitung') {
+                row.style.backgroundColor = '#ffffff';
+            }
             if (report.rating === 4 && report.status === 'neu') {
                 row.style.backgroundColor = '#deecff ';
             }
@@ -69,7 +72,7 @@ function loadReports() {
 
                 //Innerhalb der Prüfung, prüfen, ob alles andere als rating = 4 ist, wenn ja Button Farbe ändern.
                 if (report.rating !== 4) {
-                    statusSelect.style.backgroundColor = '#ffcaca'; 
+                    statusSelect.style.backgroundColor = '#ffcaca';
                 }
             }
 
@@ -108,7 +111,7 @@ function createStatusSelect(status, key) {
     const select = document.createElement('select');
     select.className = 'drop-down';
     select.innerHTML = `
-        <option value="neu" ${status === 'neu' ? 'selected' : ''}>Neu</option>
+        <option value="neu" ${status === 'neu' ? 'selected' : ''}disabled>Neu</option>
         <option value="In Bearbeitung" ${status === 'In Bearbeitung' ? 'selected' : ''}>In Bearbeitung</option>
         <option value="Umgesetzt" ${status === 'Umgesetzt' ? 'selected' : ''}>Umgesetzt</option>
         <option value="Abgelehnt" ${status === 'Abgelehnt' ? 'selected' : ''}>Abgelehnt</option>`;
@@ -118,7 +121,7 @@ function createStatusSelect(status, key) {
         const prioritySelect = select.closest('tr').querySelector('select');
         const currentPriority = parseInt(prioritySelect.value);
         if (currentPriority === 4) { // => Prüfe, ob ein Rating festgelegt ist, bevor der Status geändert werden darf
-            alert('Bitte zuerst die Priorisierung einstellen.'); 
+            alert('Bitte zuerst die Priorisierung einstellen.');
             select.value = status; // => Setze den alten Wert zurück
         } else {
             update(ref(db, 'realReports/' + key), { status: select.value });

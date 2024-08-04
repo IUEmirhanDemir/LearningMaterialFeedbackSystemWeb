@@ -60,3 +60,9 @@ function saveReportToFirebase(report) {
 }
 
 document.getElementById('submit').addEventListener('click', submitReport);
+
+//Logout
+const logoutBtn = document.querySelector(".logout-btn")
+logoutBtn.addEventListener("click", () => {
+    window.location.href = 'index.html'; //user wird auf login-Seite geleitet
+})

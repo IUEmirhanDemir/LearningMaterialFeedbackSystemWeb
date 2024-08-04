@@ -131,6 +131,11 @@ function createStatusSelect(status, key) {
     return select;
 }
 
+//Logout
+const logoutBtn = document.querySelector(".logout-btn")
+logoutBtn.addEventListener("click", () => {
+    window.location.replace("index.html"); //user wird auf login-Seite geleitet
+})
 
 
 document.addEventListener('DOMContentLoaded', loadReports);

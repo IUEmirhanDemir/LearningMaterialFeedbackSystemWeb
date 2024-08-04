@@ -57,13 +57,13 @@ async function login() {
 }
 
 document.getElementById('loginButton').addEventListener('click', (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
     login();
 });
 
-document.getElementById('password').addEventListener('keypress', function(event) {
+document.getElementById('password').addEventListener('keypress', function (event) {
     if (event.key === "Enter") {
-        event.preventDefault(); 
+        event.preventDefault();
         login();
     }
 });

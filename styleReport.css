@@ -93,6 +93,7 @@ header {
     height: 490px;
     overflow: hidden;
     z-index: 2;
+    /*background: #fff; Optionaler Hintergrund*/
 }
 
 .report-container {
@@ -103,7 +104,6 @@ header {
     width: 700px;
     height: 600px;
     padding: 40px;
-    /*background: #fff; Optionaler Hintergrund*/
     transition: .3s ease-in-out;
 }
 

@@ -18,8 +18,9 @@ body {
 header {
     position: fixed;
     top: 0;
-    left: 5%;
-    width: 90%;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -85,8 +86,14 @@ header {
 }
 
 .table-box {
-    margin: 50px auto;
-    padding-top: 60px;
+    display: relative;
+    width: 100%;
+    margin-top: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 50px;
+
+
 }
 
 /*.table-row {

@@ -146,12 +146,14 @@ const header = document.querySelector('header');
 
 window.addEventListener('scroll', function () {
     let scrollTop = window.scrollY || document.documentElement.scrollTop;
+    console.log(`ScrollTop: ${scrollTop}, LastScrollTop: ${lastScrollTop}`); // Loggen Sie die Scroll-Positionen
     if (scrollTop === 0) {
         // Ganz oben
         header.style.top = '0';
     } else if (scrollTop > lastScrollTop) {
         // Scroll nach unten
         header.style.top = '-100px'; // Höhe des Headers anpassen
+        console.log('Scrolling down, hiding header');
     }
     lastScrollTop = scrollTop;
 });

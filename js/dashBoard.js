@@ -55,6 +55,7 @@ function loadReports() {
 
             //Wenn Status 'Umgesetzt' oder 'Abgelehnt' => DropDown deaktivieren
             if (report.status === 'Umgesetzt' || report.status === 'Abgelehnt') {
+                console.log('Status ist "Umgesetzt" oder "Abgelehnt". Dropdowns werden deaktiviert.');
                 ratingSelect.disabled = true;
                 statusSelect.disabled = true;
             }
@@ -78,6 +79,7 @@ function loadReports() {
 
             // Wenn der status auf In Bearbeitung gestellt wird und keine rating vorhanden ist wird das Dropdown für Prio rot
             if (report.status === 'In Bearbeitung' && report.rating === 4) {
+                console.log('Status ist "In Bearbeitung" und Rating ist nicht 4. Rating-Dropdown wird rot hervorgehoben.');
                 ratingCell.style.backgroundColor = '#ffcaca';
             }
 
@@ -134,7 +136,9 @@ function createStatusSelect(status, key) {
 //Logout
 const logoutBtn = document.querySelector(".logout-btn")
 logoutBtn.addEventListener("click", () => {
+    console.log("Logout button clicked"); // Überprüfen, ob der Button-Klick registriert wird
     window.location.replace("index.html"); //user wird auf login-Seite geleitet
+    console.log("Redirecting to index.html"); // Überprüfen, ob die Weiterleitung erfolgt
 })
 
 
@@ -146,7 +150,7 @@ const header = document.querySelector('header');
 
 window.addEventListener('scroll', function () {
     let scrollTop = window.scrollY || document.documentElement.scrollTop;
-    console.log(`ScrollTop: ${scrollTop}, LastScrollTop: ${lastScrollTop}`); // Loggen Sie die Scroll-Positionen
+    console.log(`ScrollTop: ${scrollTop}, LastScrollTop: ${lastScrollTop}`); // Scroll-Positionen
     if (scrollTop === 0) {
         // Ganz oben
         header.style.top = '0';

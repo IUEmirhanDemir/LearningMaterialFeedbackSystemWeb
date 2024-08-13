@@ -13,6 +13,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
+console.log('Firebase initialisiert', app); // Log Firebase Initialisierung
 
 // Mapping (Zuordnung von Modul <=> Tutor)
 const tutorAssignments = {
@@ -28,9 +29,11 @@ function submitReport() {
     const medium = document.getElementById('medium').value;
     const module = document.getElementById('module').value;
     const message = document.getElementById('message').value;
+    console.log('Reportdaten:', { username, reportType, medium, module, message }); // Log der eingegebenen Daten
 
     if (!reportType || !medium || !module || !message) {
         alert('Bitte füllen Sie alle Felder aus.');
+        console.log('Meldung abgebrochen: Nicht alle Felder ausgefüllt'); // Log bei unvollständiger Eingabe
         return;
     }
 
@@ -45,14 +48,17 @@ function submitReport() {
         status: "neu",
         rating: 4
     };
+    console.log('Neuer Report:', newReport); // Log des neuen Reports
 
     saveReportToFirebase(newReport);
 }
 
 function saveReportToFirebase(report) {
     const reportsRef = ref(db, 'realReports');
+    console.log('Speichern des Reports in Firebase:', report); // Log bevor der Report gespeichert wird
     push(reportsRef, report)
         .then(() => {
+            console.log('Report erfolgreich in Firebase gespeichert'); // Log bei erfolgreichem Speichern
             alert('Meldung erfolgreich übermittelt!');
             document.getElementById('korrekturForm').reset(); // Formular zurücksetzen
         })
@@ -60,9 +66,11 @@ function saveReportToFirebase(report) {
 }
 
 document.getElementById('submit').addEventListener('click', submitReport);
+console.log('Submit-Button Event-Listener hinzugefügt'); // Log für Event-Listener Initialisierung
 
 //Logout
 const logoutBtn = document.querySelector(".logout-btn")
 logoutBtn.addEventListener("click", () => {
+    console.log('Logout-Button geklickt, Weiterleitung zur Login-Seite'); // Log beim Klicken auf den Logout-Button
     window.location.href = 'index.html'; //user wird auf login-Seite geleitet
 })
